@@ -76,3 +76,51 @@ img { max-width: 100%; height: auto; display: block; }
     transition-duration: 0.01ms !important;
   }
 }
+
+// ═══════════════════════════════════════════════════════════════════
+// PRINT STYLES
+// Used by Section 8's LessonPlanCanvas for PDF export. The canvas root
+// has className `m03-print` — only that subtree renders in print.
+// ═══════════════════════════════════════════════════════════════════
+@page {
+  size: A4;
+  margin: 20mm 18mm;
+}
+
+@media print {
+  // Drop the paper background + grid texture
+  body {
+    background: white !important;
+    background-image: none !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  // Hide everything by default
+  body * { visibility: hidden !important; }
+
+  // Show only the m03-print region (the lesson plan canvas)
+  .m03-print, .m03-print * { visibility: visible !important; }
+
+  // Position the printed region at the top of the page
+  .m03-print {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  // Keep each field together on a page when possible
+  .m03-print-field {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  // Links — show their URL after text? Skip for now (lesson plan has no links)
+  a[href]::after { content: '' !important; }
+}

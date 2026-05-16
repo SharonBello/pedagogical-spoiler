@@ -15,6 +15,7 @@ const BreakSection    = lazy(() => import('@/sections/04-break'));
 const PracticeSection = lazy(() => import('@/sections/05-practice'));
 const SharedSection   = lazy(() => import('@/sections/06-shared'));
 const QuizSection     = lazy(() => import('@/sections/07-quiz'));
+const ClosingSection  = lazy(() => import('@/sections/08-closing'));
 
 const withSuspense = (el: React.ReactNode) => (
   <Suspense fallback={null}>{el}</Suspense>
@@ -33,7 +34,7 @@ const router = createHashRouter([
       { path: 'practice', element: withSuspense(<PracticeSection />) },
       { path: 'shared',   element: withSuspense(<SharedSection   />) },
       { path: 'quiz',     element: withSuspense(<QuizSection     />) },
-      { path: 'closing',  element: <Placeholder id="closing"  /> },
+      { path: 'closing',  element: withSuspense(<ClosingSection  />) },
       { path: '*',        element: <Navigate to="/opening" replace /> },
     ],
   },

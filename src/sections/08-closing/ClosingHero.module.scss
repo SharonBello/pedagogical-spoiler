@@ -1,0 +1,113 @@
+.hero {
+  background: $blueprint-dark;
+  color: $white;
+  border-radius: $radius-lg;
+  padding: $space-6;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-5;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  @media (max-width: $bp-md) { grid-template-columns: 1fr; }
+}
+
+.icon {
+  @include flex-center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: $amber;
+  color: $blueprint-dark;
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.body { @include flex-col; gap: $space-2; }
+
+.eyebrow {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-weight: $weight-black;
+  font-size: $text-2xl;
+  color: $white;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+
+  @include respond-to(md) { font-size: $text-3xl; }
+}
+
+.lede {
+  margin: 0;
+  font-size: $text-md;
+  line-height: $leading-loose;
+  color: $blueprint-pale;
+  max-width: 580px;
+
+  strong { color: $amber-light; font-weight: $weight-bold; }
+}
+
+// ── STATS ──────────────────────────────────────────────────────
+.stats {
+  margin: $space-3 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: $space-3;
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: $radius-md;
+  padding: $space-3 $space-4;
+  @include flex-col;
+  gap: 2px;
+
+  dt {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: $amber-light;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    font-family: $font-display;
+    font-size: $text-2xl;
+    font-weight: $weight-black;
+    color: $white;
+    line-height: 1.1;
+
+    span { font-size: $text-md; color: $blueprint-pale; font-weight: $weight-bold; }
+  }
+}
+
+.statWide { grid-column: 1 / -1; }
+
+.statText {
+  font-size: $text-md !important;
+  font-weight: $weight-bold !important;
+  word-break: break-word;
+}

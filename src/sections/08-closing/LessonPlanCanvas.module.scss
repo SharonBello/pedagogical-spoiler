@@ -1,0 +1,226 @@
+.canvas {
+  @include paper-surface;
+  padding: $space-6;
+  @include flex-col;
+  gap: $space-5;
+  border-top: 4px solid $blueprint;
+}
+
+// ── TIP BANNER (screen only) ───────────────────────────────────
+.tip {
+  padding: $space-3 $space-4;
+  background: $amber-pale;
+  border-right: 3px solid $amber;
+  border-radius: $radius-sm;
+  font-size: $text-sm;
+  line-height: $leading-loose;
+  color: $ink;
+
+  strong { color: $amber-dark; font-weight: $weight-bold; }
+  em { font-style: italic; color: $blueprint-dark; font-weight: $weight-medium; }
+}
+
+// ── FORM HEADER ────────────────────────────────────────────────
+.formHeader {
+  padding-bottom: $space-3;
+  border-bottom: 2px solid $blueprint-dark;
+}
+
+.formTitleBlock { @include flex-col; gap: 4px; }
+
+.formEyebrow {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.formTitle {
+  font-family: $font-display;
+  font-weight: $weight-black;
+  font-size: $text-2xl;
+  color: $blueprint-dark;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+// ── META ───────────────────────────────────────────────────────
+.meta {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-2 $space-4;
+  padding: $space-3 $space-4;
+  background: $paper-warm;
+  border: 1px solid $paper-line;
+  border-radius: $radius-sm;
+
+  @include respond-to(md) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.metaItem { @include flex-col; gap: 2px; }
+
+.metaWide {
+  grid-column: 1 / -1;
+
+  @include respond-to(md) { grid-column: span 2; }
+}
+
+.metaItem dt {
+  font-family: $font-mono;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: $ink-mute;
+  text-transform: uppercase;
+}
+
+.metaItem dd {
+  margin: 0;
+  font-family: $font-display;
+  font-size: $text-md;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+  word-break: break-word;
+}
+
+// ── FIELDS ─────────────────────────────────────────────────────
+.fields {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.field {
+  @include flex-col;
+  gap: $space-2;
+}
+
+.fieldHead { @include flex-col; gap: 2px; }
+
+.fieldLabel {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  font-size: $text-md;
+  color: $blueprint-dark;
+}
+
+.required {
+  color: $marker;
+  font-weight: $weight-bold;
+  margin-inline-start: 4px;
+}
+
+.fieldHint {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $ink-mute;
+  font-style: italic;
+}
+
+.textarea {
+  width: 100%;
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: $leading-body;
+  color: $ink;
+  background: $paper;
+  border: 1.5px solid $paper-line;
+  border-radius: $radius-md;
+  padding: $space-3 $space-4;
+  resize: vertical;
+  min-height: 88px;
+  transition: all $dur-fast $ease-out;
+
+  &::placeholder { color: $ink-mute; font-style: italic; }
+
+  &:focus {
+    outline: none;
+    border-color: $blueprint;
+    box-shadow: 0 0 0 3px rgba($blueprint, 0.15);
+    background: $white;
+  }
+}
+
+// Print mirror — hidden on screen, visible in PDF
+.printMirror {
+  display: none;
+  white-space: pre-wrap;
+  font-family: $font-body;
+  font-size: 12pt;
+  line-height: 1.6;
+  color: black;
+  padding: $space-3 0 $space-2;
+  border-bottom: 1px dotted #999;
+
+  em { color: #888; font-style: italic; font-size: 11pt; }
+}
+
+// ── ACTION ROW ─────────────────────────────────────────────────
+.actionRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: $space-2;
+}
+
+.printBtn {
+  @include focus-ring;
+  @include flex-center;
+  gap: $space-2;
+  padding: $space-3 $space-6;
+  background: $marker;
+  color: $white;
+  border: 1.5px solid $marker;
+  border-radius: $radius-md;
+  font-family: $font-body;
+  font-size: $text-md;
+  font-weight: $weight-bold;
+  cursor: pointer;
+  transition: all $dur-fast $ease-out;
+
+  svg { font-size: 20px; }
+
+  &:hover {
+    background: $marker-dark;
+    border-color: $marker-dark;
+    transform: translateY(-1px);
+    box-shadow: $shadow-lift;
+  }
+}
+
+// ═════════════════════════════════════════════════════════════════
+// PRINT LAYOUT — show plain mirrors instead of textareas
+// ═════════════════════════════════════════════════════════════════
+@media print {
+  .canvas {
+    padding: 0;
+    box-shadow: none;
+    border-top: none;
+    background: white !important;
+  }
+
+  .tip, .actionRow { display: none !important; }
+
+  .formTitle { font-size: 22pt; }
+  .formEyebrow { color: #555; }
+
+  .meta {
+    background: transparent;
+    border-color: #999;
+  }
+
+  .metaItem dt { color: #555; }
+  .metaItem dd { color: black; }
+
+  .fieldLabel { color: black; font-size: 13pt; }
+  .fieldHint { display: none; }
+  .required { color: black; }
+
+  // Hide editing affordances
+  .textarea { display: none !important; }
+
+  // Show printable plain-text mirror
+  .printMirror { display: block; }
+
+  // Each field stays together on a page when possible
+  .field { page-break-inside: avoid; break-inside: avoid; }
+}
