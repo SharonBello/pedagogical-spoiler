@@ -1,0 +1,14 @@
+.shell {
+  min-height: 100vh;
+  background: $paper;
+  // Blueprint grid as a faint full-page texture — very subtle.
+  background-image:
+    linear-gradient(to right, $blueprint-grid 1px, transparent 1px),
+    linear-gradient(to bottom, $blueprint-grid 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.main {
+  @include container;
+  padding-block: $space-7 $space-9;
+}

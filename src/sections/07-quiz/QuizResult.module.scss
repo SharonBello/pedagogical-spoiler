@@ -1,0 +1,138 @@
+.banner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-5;
+  border-radius: $radius-lg;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: $space-4;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+}
+
+// ── TONE VARIANTS ───────────────────────────────────────────────
+.banner-great {
+  background: $blueprint-dark;
+  color: $white;
+}
+
+.banner-good {
+  background: $blueprint;
+  color: $white;
+}
+
+.banner-tryagain {
+  background: $marker;
+  color: $white;
+}
+
+// ── ICON ───────────────────────────────────────────────────────
+.icon {
+  @include flex-center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 32px;
+
+  @media (max-width: $bp-md) { grid-row: 1 / 3; width: 48px; height: 48px; font-size: 26px; }
+}
+
+// ── BODY ───────────────────────────────────────────────────────
+.body { @include flex-col; gap: 4px; }
+
+.tag {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber;
+  text-transform: uppercase;
+}
+
+.scoreLine {
+  @include flex-start;
+  gap: $space-2;
+  align-items: baseline;
+  font-family: $font-display;
+  color: $white;
+}
+
+.score {
+  font-size: 48px;
+  font-weight: $weight-black;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.scoreSlash {
+  font-size: 28px;
+  font-weight: $weight-bold;
+  color: $blueprint-pale;
+}
+
+.scorePct {
+  font-family: $font-mono;
+  font-size: $text-md;
+  font-weight: $weight-medium;
+  color: $amber-light;
+}
+
+.verdict {
+  margin: 0;
+  font-size: $text-md;
+  font-weight: $weight-bold;
+  color: $white;
+  font-family: $font-display;
+}
+
+.note {
+  margin: 0;
+  margin-top: $space-1;
+  font-size: $text-sm;
+  color: $blueprint-pale;
+  line-height: $leading-body;
+}
+
+// ── RETRY BUTTON ───────────────────────────────────────────────
+.retryBtn {
+  @include focus-ring;
+  @include flex-center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: rgba(255, 255, 255, 0.12);
+  color: $white;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: $radius-md;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  cursor: pointer;
+  transition: all $dur-fast $ease-out;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  svg { font-size: 16px; }
+
+  @media (max-width: $bp-md) { grid-column: 2; align-self: end; }
+}

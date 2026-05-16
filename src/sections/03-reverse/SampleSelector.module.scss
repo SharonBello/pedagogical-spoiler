@@ -1,0 +1,53 @@
+.selector {
+  @include flex-col;
+  gap: $space-2;
+  margin-bottom: $space-3;
+}
+
+.label {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.tabs {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+}
+
+.tab {
+  @include focus-ring;
+  @include flex-start;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: $white;
+  border: 1.5px solid $blueprint-pale;
+  border-radius: $radius-full;
+  color: $blueprint-dark;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  cursor: pointer;
+  transition: all $dur-fast $ease-out;
+
+  &:hover { transform: translateY(-1px); box-shadow: $shadow-paper; border-color: $blueprint; }
+}
+
+.tabActive {
+  background: $blueprint;
+  color: $white;
+  border-color: $blueprint;
+  font-weight: $weight-bold;
+  box-shadow: $shadow-marker;
+
+  &:hover { background: $blueprint-dark; border-color: $blueprint-dark; }
+}
+
+.emoji {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tabLabel { line-height: 1.2; }

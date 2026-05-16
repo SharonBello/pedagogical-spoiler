@@ -1,0 +1,94 @@
+.nav {
+  position: sticky;
+  top: 4px;
+  z-index: $z-nav;
+  background: rgba($paper, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid $blueprint-pale;
+}
+
+.inner {
+  @include container;
+  @include flex-between;
+  gap: $space-4;
+  padding-block: $space-3;
+  flex-wrap: wrap;
+}
+
+// ── BRAND ─────────────────────────────────────────────
+.brand {
+  @include flex-start;
+  gap: $space-2;
+  min-width: 0;
+}
+
+.brandMono {
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $amber-dark;
+  letter-spacing: 0.04em;
+}
+
+.brandTitle {
+  font-family: $font-display;
+  font-size: $text-md;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+  white-space: nowrap;
+}
+
+// ── DOTS ──────────────────────────────────────────────
+.dots {
+  display: flex;
+  gap: $space-2;
+  list-style: none;
+}
+
+.dotItem { display: contents; }
+
+.dot {
+  @include flex-center;
+  @include focus-ring;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-full;
+  border: 1.5px solid $blueprint-light;
+  background: $white;
+  color: $blueprint;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  transition: all $dur-fast $ease-out;
+  position: relative;
+
+  &:hover { transform: translateY(-1px); box-shadow: $shadow-paper; }
+}
+
+.dotNum { line-height: 1; }
+
+// states
+.dot-locked {
+  opacity: 0.5;
+  color: $ink-mute;
+  border-color: $paper-line;
+}
+
+.dot-visited {
+  border-color: $amber;
+  background: $amber-pale;
+  color: $amber-dark;
+}
+
+.dot-done {
+  border-color: $blueprint;
+  background: $blueprint;
+  color: $white;
+}
+
+.dot-active {
+  transform: scale(1.15);
+  box-shadow: $shadow-lift;
+  border-color: $marker;
+  border-width: 2px;
+}

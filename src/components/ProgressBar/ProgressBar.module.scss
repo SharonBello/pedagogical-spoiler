@@ -1,0 +1,14 @@
+.wrap {
+  position: fixed;
+  top: 0; inset-inline: 0;
+  height: 4px;
+  background: $blueprint-pale;
+  z-index: $z-nav + 1;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: linear-gradient(to left, $amber, $marker);
+  transition: width $dur-med $ease-out;
+}

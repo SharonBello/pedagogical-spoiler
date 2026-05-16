@@ -1,0 +1,78 @@
+// ═══════════════════════════════════════════════════════════════════
+// M03 · Global Styles
+// ═══════════════════════════════════════════════════════════════════
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: $leading-body;
+  color: $ink;
+  background: $paper;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  direction: rtl;
+}
+
+// ── TYPOGRAPHY DEFAULTS ────────────────────────────────────────────
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  line-height: $leading-tight;
+  color: $blueprint-dark;
+}
+
+h1 { font-size: $text-3xl; letter-spacing: -0.02em; }
+h2 { font-size: $text-2xl; letter-spacing: -0.01em; }
+h3 { font-size: $text-xl; }
+h4 { font-size: $text-lg; }
+h5 { font-size: $text-md; }
+h6 { font-size: $text-base; }
+
+p { margin-bottom: $space-3; }
+
+a {
+  color: $blueprint;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color $dur-fast $ease-out;
+  &:hover { border-bottom-color: $blueprint; }
+}
+
+code, pre {
+  font-family: $font-mono;
+  font-size: 0.95em;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+// ── SELECTION ──────────────────────────────────────────────────────
+::selection {
+  background: $amber;
+  color: $blueprint-dark;
+}
+
+// ── REDUCED MOTION ─────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

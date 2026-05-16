@@ -1,0 +1,301 @@
+.card {
+  @include paper-surface;
+  padding: $space-4 $space-5;
+  border-top: 4px solid $blueprint;
+  @include flex-col;
+  gap: $space-4;
+}
+
+.cardFirst {
+  border-top: 4px solid $marker;
+  box-shadow: $shadow-lift;
+}
+
+.cardLast { border-top: 4px solid $amber; }
+
+// ── HEADER ─────────────────────────────────────────────────────
+.head {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: $space-3;
+  padding-bottom: $space-3;
+  border-bottom: $border-dash;
+}
+
+.planBadge {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.06em;
+  background: $blueprint-pale;
+  color: $blueprint-dark;
+  padding: 3px $space-2;
+  border-radius: $radius-sm;
+}
+
+.cardFirst .planBadge { background: $marker; color: $white; }
+.cardLast .planBadge  { background: $amber; color: $amber-dark; }
+
+.symbol { font-size: 24px; line-height: 1; }
+
+.title {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  font-size: $text-md;
+  color: $blueprint-dark;
+}
+
+.titleEn {
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: $weight-normal;
+  color: $ink-mute;
+  margin-inline-start: $space-1;
+}
+
+.deliveryNote {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $ink-mute;
+  font-weight: $weight-medium;
+  white-space: nowrap;
+}
+
+// ── BLOCK ──────────────────────────────────────────────────────
+.block { @include flex-col; gap: $space-2; }
+
+.blockHead {
+  @include flex-between;
+  gap: $space-2;
+  flex-wrap: wrap;
+}
+
+.blockLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.12em;
+  color: $blueprint;
+  text-transform: uppercase;
+}
+
+.blockLabelOut { color: $amber-dark; }
+
+.blockMeta {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $ink-mute;
+  font-style: italic;
+}
+
+// ── PROMPT ─────────────────────────────────────────────────────
+.prompt {
+  background: $paper-warm;
+  border-right: 3px solid $blueprint-light;
+  border-radius: $radius-sm;
+  padding: $space-3 $space-4;
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-2 $space-3;
+}
+
+.promptRow { display: contents; }
+
+.promptKey {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  color: $blueprint-dark;
+  letter-spacing: 0.04em;
+  align-self: start;
+  padding-top: 2px;
+}
+
+.promptVal {
+  margin: 0;
+  font-size: $text-sm;
+  line-height: $leading-body;
+  color: $ink;
+}
+
+// ── OUTPUT — body bullets (non-evaluate stages) ────────────────
+.output {
+  list-style: none;
+  background: $amber-pale;
+  border-right: 3px solid $amber;
+  border-radius: $radius-sm;
+  padding: $space-3 $space-4;
+  margin: 0;
+  @include flex-col;
+  gap: 4px;
+
+  li {
+    font-size: $text-sm;
+    line-height: $leading-body;
+    color: $ink;
+    font-family: $font-body;
+  }
+}
+
+// ═════════════════════════════════════════════════════════════════
+// RUBRIC TABLE
+// ═════════════════════════════════════════════════════════════════
+.rubricWrap {
+  margin: 0;
+  background: $white;
+  border: 1px solid $blueprint-pale;
+  border-radius: $radius-sm;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rubric {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: $font-body;
+  font-size: $text-xs;
+  table-layout: fixed;
+
+  th, td {
+    padding: $space-2 $space-3;
+    text-align: start;
+    vertical-align: top;
+    border: 1px solid $paper-line;
+    line-height: 1.45;
+  }
+}
+
+// Header row
+.rubricCorner {
+  background: $blueprint-dark;
+  color: $white;
+  font-family: $font-display;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  width: 28%;
+  letter-spacing: -0.01em;
+}
+
+.rubricLevel {
+  background: $blueprint;
+  color: $white;
+  text-align: center !important;
+  width: 24%;
+
+  display: table-cell;
+}
+
+.rubricLevelLabel {
+  display: block;
+  font-family: $font-display;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+}
+
+.rubricLevelPts {
+  display: block;
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: $weight-medium;
+  opacity: 0.85;
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+}
+
+// Body rows
+.rubricCriterion {
+  background: $paper-warm;
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+  font-size: $text-sm;
+}
+
+.rubricCell {
+  color: $ink;
+  font-size: $text-xs;
+}
+
+// Alternate row tint for readability — applied to the cell column only.
+// (The criterion column keeps its $paper-warm bg unchanged.)
+.rubric tbody tr:nth-child(even) {
+  .rubricCell { background: rgba($blueprint-pale, 0.25); }
+}
+
+// Footer
+.rubricTotal {
+  background: $blueprint-pale;
+  color: $blueprint-dark;
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-bold;
+  text-align: end !important;
+  letter-spacing: 0.06em;
+}
+
+// ═════════════════════════════════════════════════════════════════
+// SAMPLE QUESTIONS (evaluate stage)
+// ═════════════════════════════════════════════════════════════════
+.questions {
+  @include flex-col;
+  gap: $space-2;
+  margin-top: $space-2;
+  padding: $space-3 $space-4;
+  background: $amber-pale;
+  border-right: 3px solid $amber;
+  border-radius: $radius-sm;
+}
+
+.questionsLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.12em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.questionList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include flex-col;
+  gap: $space-2;
+}
+
+.questionItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-2;
+  align-items: baseline;
+  font-size: $text-sm;
+  line-height: $leading-body;
+  color: $ink;
+}
+
+.qBadge {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: $weight-bold;
+  letter-spacing: 0.06em;
+  padding: 2px $space-2;
+  border-radius: $radius-sm;
+  align-self: start;
+  white-space: nowrap;
+}
+
+.qBadge-LOTS {
+  background: $blueprint-pale;
+  color: $blueprint-dark;
+}
+
+.qBadge-HOTS {
+  background: $marker;
+  color: $white;
+}
+
+.qText {
+  unicode-bidi: plaintext;  // let each question render in its natural direction
+}

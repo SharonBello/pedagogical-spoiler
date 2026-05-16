@@ -1,0 +1,96 @@
+.section {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.head {
+  @include flex-col;
+  gap: $space-1;
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: $text-xl;
+  color: $blueprint-dark;
+  @include respond-to(md) {
+    font-size: $text-2xl;
+  }
+}
+
+.list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-3;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.item {
+  @include paper-surface;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding: $space-5 $space-4;
+  border-top: 3px solid $blueprint;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  background: $blueprint-pale;
+  color: $blueprint-dark;
+  @include flex-center;
+  font-size: 22px;
+}
+
+.body {
+  @include flex-col;
+  gap: $space-1;
+}
+
+.itemTitle {
+  font-family: $font-display;
+  font-size: $text-md;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+}
+
+.itemText {
+  font-size: $text-sm;
+  color: $ink-soft;
+  line-height: $leading-loose;
+}
+
+.cite {
+  @include flex-start;
+  gap: $space-2;
+  margin-top: $space-3;
+  padding: $space-2 $space-3;
+  background: $paper-warm;
+  border-radius: $radius-sm;
+  font-size: $text-sm;
+  color: $ink-mute;
+  align-self: flex-start;
+}
+
+.citeMono {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  background: $blueprint-dark;
+  color: $white;
+  padding: 2px $space-2;
+  border-radius: $radius-sm;
+  letter-spacing: 0.08em;
+}

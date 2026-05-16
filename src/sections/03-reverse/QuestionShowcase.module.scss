@@ -1,0 +1,126 @@
+.section { @include flex-col; gap: $space-4; }
+
+.intro { @include flex-col; gap: $space-2; }
+
+.tag {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: $text-xl;
+  color: $blueprint-dark;
+  @include respond-to(md) { font-size: $text-2xl; }
+}
+
+.lede {
+  font-size: $text-md;
+  line-height: $leading-loose;
+  color: $ink-soft;
+  max-width: 640px;
+}
+
+// ── The "Exhibit A" card ───────────────────────────────────────
+.card {
+  @include paper-surface;
+  position: relative;
+  padding: $space-7 $space-6 $space-5;
+  border-top: 4px solid $marker;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    @include blueprint-grid(20px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+}
+
+.stamp {
+  position: absolute;
+  top: $space-4;
+  left: $space-4;
+  transform: rotate(-4deg);
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: $marker;
+  border: 2px dashed $marker;
+  padding: $space-1 $space-3;
+  border-radius: $radius-sm;
+  z-index: 2;
+}
+
+.meta {
+  @include flex-start;
+  flex-wrap: wrap;
+  gap: $space-2;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  color: $blueprint-dark;
+  margin-bottom: $space-4;
+
+  span[aria-hidden] { color: $ink-mute; }
+}
+
+.metaText {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  font-style: italic;
+}
+
+.question {
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-style: italic;
+  color: $blueprint-dark;
+  line-height: $leading-body;
+  border-right: 4px solid $amber;
+  padding: $space-3 $space-4;
+  background: $amber-pale;
+  border-radius: $radius-sm;
+  margin: 0 0 $space-3;
+
+  @include respond-to(md) { font-size: $text-xl; }
+}
+
+.questionHe {
+  font-size: $text-sm;
+  color: $ink-soft;
+  line-height: $leading-loose;
+  margin: 0;
+}
+
+// ── Bridge to the stepper ──────────────────────────────────────
+.bridge {
+  @include flex-start;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: $paper-warm;
+  border-right: 3px solid $blueprint;
+  border-radius: $radius-sm;
+  font-size: $text-sm;
+  color: $ink;
+  line-height: $leading-loose;
+
+  strong { color: $marker; font-weight: $weight-bold; }
+}
+
+.bridgeBadge {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.1em;
+  background: $blueprint;
+  color: $white;
+  padding: 3px $space-2;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+}

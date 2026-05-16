@@ -1,0 +1,230 @@
+.section {
+  @include flex-col;
+  gap: $space-4;
+  margin-top: $space-3;
+  padding: $space-5;
+  background: $blueprint-dark;
+  border-radius: $radius-lg;
+  color: $white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+}
+
+.head { @include flex-col; gap: $space-1; }
+
+.tag {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $white;
+  letter-spacing: -0.01em;
+  @include respond-to(md) { font-size: $text-2xl; }
+}
+
+.sub {
+  font-size: $text-md;
+  line-height: $leading-loose;
+  color: $blueprint-pale;
+  max-width: 640px;
+
+  strong { color: $amber; font-weight: $weight-bold; }
+}
+
+// ── STAY / CHANGE rows ─────────────────────────────────────────
+.row {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: $radius-md;
+  padding: $space-3 $space-4;
+}
+
+.rowHead {
+  @include flex-start;
+  gap: $space-2;
+  margin-bottom: $space-3;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-family: $font-mono;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 3px $space-2;
+  border-radius: $radius-sm;
+  font-weight: $weight-medium;
+}
+
+.badgeStay {
+  background: rgba(74, 123, 163, 0.4);
+  color: $blueprint-pale;
+}
+
+.badgeChange {
+  background: rgba(232, 163, 58, 0.18);
+  color: $amber-light;
+}
+
+.rowLabel {
+  font-size: $text-sm;
+  color: $blueprint-pale;
+  font-weight: $weight-medium;
+
+  strong { color: $amber; font-weight: $weight-bold; }
+}
+
+// ── Card grid (2 cards per row) ────────────────────────────────
+.cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-2;
+
+  @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 4px $space-3;
+  padding: $space-3 $space-4;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: $radius-sm;
+}
+
+.num {
+  font-family: $font-mono;
+  font-size: $text-base;
+  font-weight: $weight-bold;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  @include flex-center;
+  grid-row: 1 / 3;
+}
+
+.cardStay .num {
+  background: rgba(74, 123, 163, 0.3);
+  color: $blueprint-pale;
+}
+
+.cardChange .num {
+  background: rgba(232, 163, 58, 0.2);
+  color: $amber;
+}
+
+.key {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  font-size: $text-md;
+  color: $white;
+}
+
+.desc {
+  grid-column: 2;
+  font-size: $text-sm;
+  color: $blueprint-pale;
+  line-height: $leading-body;
+}
+
+// ── Concrete example ───────────────────────────────────────────
+.example {
+  padding: $space-4;
+  background: rgba(232, 163, 58, 0.08);
+  border: 1px dashed rgba(232, 163, 58, 0.4);
+  border-radius: $radius-md;
+}
+
+.exampleHead {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: $amber;
+  text-transform: uppercase;
+  margin-bottom: $space-3;
+
+  strong { color: $white; font-weight: $weight-bold; }
+}
+
+.exampleGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-2;
+
+  @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.exampleCol {
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: $radius-sm;
+  padding: $space-3 $space-4;
+}
+
+.exampleColHead {
+  @include flex-start;
+  gap: $space-2;
+  margin-bottom: $space-2;
+}
+
+.exampleSym {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.exampleName {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  color: $white;
+  font-size: $text-sm;
+}
+
+.exampleLine {
+  display: flex;
+  gap: $space-2;
+  padding: 3px 0;
+  align-items: baseline;
+  line-height: $leading-body;
+}
+
+.exampleLab {
+  font-family: $font-mono;
+  font-size: 10px;
+  color: $amber-light;
+  letter-spacing: 0.06em;
+  min-width: 42px;
+  font-weight: $weight-medium;
+}
+
+.exampleVal {
+  color: $blueprint-pale;
+  font-size: $text-sm;
+}
+
+// ── Bottom footnote (M02 callback) ─────────────────────────────
+.bottom {
+  margin-top: $space-2;
+  font-size: $text-xs;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: $font-mono;
+}

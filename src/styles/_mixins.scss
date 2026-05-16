@@ -1,0 +1,75 @@
+// ═══════════════════════════════════════════════════════════════════
+// M03 · Mixins
+// ═══════════════════════════════════════════════════════════════════
+@use "tokens" as *;
+
+// ── RESPONSIVE ─────────────────────────────────────────────────────
+@mixin respond-to($bp) {
+  @if $bp == sm { @media (min-width: $bp-sm) { @content; } }
+  @else if $bp == md { @media (min-width: $bp-md) { @content; } }
+  @else if $bp == lg { @media (min-width: $bp-lg) { @content; } }
+  @else if $bp == xl { @media (min-width: $bp-xl) { @content; } }
+}
+
+// ── FLEX HELPERS ───────────────────────────────────────────────────
+@mixin flex-center { display: flex; align-items: center; justify-content: center; }
+@mixin flex-between { display: flex; align-items: center; justify-content: space-between; }
+@mixin flex-start { display: flex; align-items: center; }
+@mixin flex-col { display: flex; flex-direction: column; }
+
+// ── CONTAINER ──────────────────────────────────────────────────────
+@mixin container {
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $container-pad;
+}
+
+// ── BLUEPRINT GRID BACKGROUND ──────────────────────────────────────
+// The signature texture — a faint grid pattern like architect's paper.
+// Use on hero, station diagrams, anywhere we want the "drafting" feel.
+@mixin blueprint-grid($size: 24px, $opacity: 1) {
+  background-image:
+    linear-gradient(to right, $blueprint-grid 1px, transparent 1px),
+    linear-gradient(to bottom, $blueprint-grid 1px, transparent 1px);
+  background-size: $size $size;
+  opacity: $opacity;
+}
+
+// ── PAPER SURFACE ──────────────────────────────────────────────────
+// A card or panel styled like a sheet of drafting paper
+@mixin paper-surface {
+  background: $white;
+  border: $border-paper;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-paper;
+}
+
+// ── ACCESSIBILITY ──────────────────────────────────────────────────
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $amber;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+// ── ANNOTATION (the amber "handwritten" callout style) ─────────────
+@mixin annotation {
+  font-family: $font-mono;
+  font-size: $text-sm;
+  color: $amber-dark;
+  background: $amber-pale;
+  padding: $space-1 $space-3;
+  border-right: 3px solid $amber;
+  border-radius: $radius-sm;
+}

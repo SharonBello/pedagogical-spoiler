@@ -1,0 +1,172 @@
+.section {
+  @include paper-surface;
+  @include flex-col;
+  gap: $space-4;
+  padding: $space-5;
+  border-right: 4px solid $blueprint;
+}
+
+.head { @include flex-col; gap: $space-1; }
+
+.tag {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.title {
+  @include flex-start;
+  gap: $space-2;
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+  @include respond-to(md) { font-size: $text-2xl; }
+}
+
+.check {
+  color: $success;
+  font-size: 28px;
+  background: rgba($success, 0.1);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.sub {
+  font-size: $text-md;
+  line-height: $leading-loose;
+  color: $ink-soft;
+  margin-top: $space-1;
+  max-width: 600px;
+
+  strong { color: $marker; font-weight: $weight-bold; }
+}
+
+// ── FORM ───────────────────────────────────────────────────────
+.form { @include flex-col; gap: $space-3; }
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-3;
+
+  @include respond-to(sm) { grid-template-columns: 1fr 1fr; }
+}
+
+.field {
+  @include flex-col;
+  gap: $space-1;
+}
+
+.fieldHalf { /* layout handled by .row */ }
+
+.label {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.08em;
+  color: $blueprint-dark;
+  text-transform: uppercase;
+}
+
+.req {
+  color: $marker;
+  margin-inline-start: 2px;
+}
+
+.input {
+  @include focus-ring;
+  font-family: $font-body;
+  font-size: $text-base;
+  padding: $space-2 $space-3;
+  background: $paper-warm;
+  border: 1.5px solid $blueprint-pale;
+  border-radius: $radius-sm;
+  color: $ink;
+  transition: border-color $dur-fast $ease-out;
+
+  &::placeholder { color: $ink-mute; }
+  &:hover  { border-color: $blueprint-light; }
+  &:focus  { background: $white; border-color: $blueprint; outline: none; }
+}
+
+.saveBtn {
+  @include focus-ring;
+  align-self: flex-start;
+  padding: $space-3 $space-5;
+  margin-top: $space-2;
+  background: $blueprint;
+  color: $white;
+  font-family: $font-body;
+  font-size: $text-base;
+  font-weight: $weight-bold;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: all $dur-fast $ease-out;
+
+  &:hover:not(:disabled) {
+    background: $blueprint-dark;
+    transform: translateY(-1px);
+    box-shadow: $shadow-paper;
+  }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+// ── SAVED STATE ────────────────────────────────────────────────
+.saved {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-2;
+  background: $paper-warm;
+  border-radius: $radius-sm;
+  padding: $space-3 $space-4;
+  margin: 0;
+
+  @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+
+  > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $space-3;
+    align-items: baseline;
+  }
+
+  dt {
+    font-family: $font-mono;
+    font-size: 11px;
+    font-weight: $weight-medium;
+    letter-spacing: 0.06em;
+    color: $blueprint-dark;
+    min-width: 56px;
+  }
+
+  dd {
+    margin: 0;
+    font-family: $font-display;
+    font-weight: $weight-bold;
+    color: $blueprint-dark;
+    font-size: $text-base;
+  }
+}
+
+.editBtn {
+  @include flex-start;
+  @include focus-ring;
+  gap: $space-2;
+  align-self: flex-start;
+  padding: $space-2 $space-3;
+  background: transparent;
+  color: $blueprint;
+  border: 1px solid $blueprint-pale;
+  border-radius: $radius-sm;
+  font-family: $font-body;
+  font-size: $text-sm;
+  cursor: pointer;
+  transition: all $dur-fast $ease-out;
+
+  &:hover { background: $blueprint-pale; }
+
+  svg { font-size: 16px; }
+}

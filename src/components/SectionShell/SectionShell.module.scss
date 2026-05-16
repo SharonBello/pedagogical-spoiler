@@ -1,0 +1,107 @@
+.section {
+  @include flex-col;
+  gap: $space-6;
+  max-width: 880px;
+  margin-inline: auto;
+}
+
+// ── HEADER ──────────────────────────────────────────
+.header {
+  @include flex-col;
+  gap: $space-2;
+  padding-bottom: $space-5;
+  border-bottom: $border-dash;
+}
+
+.meta {
+  @include flex-start;
+  gap: $space-4;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  color: $ink-mute;
+}
+
+.num { color: $amber-dark; font-weight: $weight-medium; }
+
+.duration {
+  @include flex-start;
+  gap: $space-1;
+}
+
+.title {
+  font-size: $text-3xl;
+  letter-spacing: -0.02em;
+  margin-top: $space-1;
+  @include respond-to(md) { font-size: $text-4xl; }
+}
+
+.subtitle {
+  font-size: $text-lg;
+  color: $ink-soft;
+  font-weight: $weight-medium;
+}
+
+// ── CONTENT ─────────────────────────────────────────
+.content {
+  @include flex-col;
+  gap: $space-5;
+}
+
+// ── FOOTER ──────────────────────────────────────────
+.footer {
+  @include flex-between;
+  gap: $space-3;
+  margin-top: $space-6;
+  padding-top: $space-5;
+  border-top: $border-dash;
+}
+
+.prev, .next {
+  @include flex-start;
+  @include focus-ring;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  border-radius: $radius-md;
+  font-family: $font-body;
+  font-size: $text-base;
+  color: $blueprint-dark;
+  border: 1.5px solid $blueprint-light;
+  background: $white;
+  transition: all $dur-fast $ease-out;
+  text-align: start;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: $shadow-paper;
+    border-color: $blueprint;
+  }
+
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+.next {
+  background: $blueprint;
+  color: $white;
+  border-color: $blueprint;
+  font-weight: $weight-bold;
+
+  &:hover:not(:disabled) {
+    background: $blueprint-dark;
+    border-color: $blueprint-dark;
+  }
+}
+
+.navLabel {
+  display: block;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  opacity: 0.7;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.navTitle {
+  display: block;
+  font-weight: $weight-bold;
+  font-size: $text-sm;
+}

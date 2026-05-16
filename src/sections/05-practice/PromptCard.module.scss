@@ -1,0 +1,140 @@
+.card {
+  @include paper-surface;
+  padding: $space-4 $space-5;
+  border-top: 4px solid $blueprint;
+  @include flex-col;
+  gap: $space-3;
+}
+
+.cardFirst {
+  border-top: 4px solid $marker;
+  box-shadow: $shadow-lift;
+}
+
+.cardLast { border-top: 4px solid $amber; }
+
+// ── HEADER ─────────────────────────────────────────────────────
+.head {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: $space-3;
+  padding-bottom: $space-3;
+  border-bottom: $border-dash;
+}
+
+.planBadge {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.06em;
+  background: $blueprint-pale;
+  color: $blueprint-dark;
+  padding: 3px $space-2;
+  border-radius: $radius-sm;
+}
+
+.cardFirst .planBadge { background: $marker; color: $white; }
+.cardLast .planBadge  { background: $amber; color: $amber-dark; }
+
+.symbol { font-size: 24px; line-height: 1; }
+
+.title {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  font-size: $text-md;
+  color: $blueprint-dark;
+}
+
+.titleEn {
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: $weight-normal;
+  color: $ink-mute;
+  margin-inline-start: $space-1;
+}
+
+.deliveryNote {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $ink-mute;
+  font-weight: $weight-medium;
+  white-space: nowrap;
+}
+
+// ── HINT ───────────────────────────────────────────────────────
+.hint {
+  margin: 0;
+  font-size: $text-sm;
+  color: $ink-soft;
+  line-height: $leading-loose;
+  padding: $space-2 $space-3;
+  background: $amber-pale;
+  border-right: 3px solid $amber;
+  border-radius: $radius-sm;
+}
+
+// ── PROMPT BODY ────────────────────────────────────────────────
+.prompt {
+  margin: 0;
+  background: $paper-warm;
+  border-right: 3px solid $blueprint-light;
+  border-radius: $radius-sm;
+  padding: $space-3 $space-4;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-2 $space-3;
+}
+
+.promptRow { display: contents; }
+
+.promptKey {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  color: $blueprint-dark;
+  letter-spacing: 0.04em;
+  align-self: start;
+  padding-top: 2px;
+}
+
+.promptVal {
+  margin: 0;
+  font-size: $text-sm;
+  line-height: $leading-body;
+  color: $ink;
+}
+
+// ── COPY BUTTON ────────────────────────────────────────────────
+.copyBtn {
+  @include flex-center;
+  @include focus-ring;
+  gap: $space-2;
+  align-self: flex-start;
+  padding: $space-2 $space-4;
+  background: $blueprint;
+  color: $white;
+  border: 1.5px solid $blueprint;
+  border-radius: $radius-md;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  cursor: pointer;
+  transition: all $dur-fast $ease-out;
+
+  svg { font-size: 18px; }
+
+  &:hover {
+    background: $blueprint-dark;
+    border-color: $blueprint-dark;
+    transform: translateY(-1px);
+    box-shadow: $shadow-paper;
+  }
+}
+
+.copyBtnDone {
+  background: $success;
+  border-color: $success;
+
+  &:hover { background: $success; border-color: $success; }
+}

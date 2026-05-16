@@ -1,0 +1,35 @@
+// Gate hint shown when the topic form isn't complete — sits just
+// above the SectionShell's prev/next nav.
+.gate {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: $marker-pale;
+  border: 1.5px solid $marker;
+  border-radius: $radius-md;
+  color: $marker-dark;
+  margin-top: $space-3;
+}
+
+.gateIcon {
+  @include flex-center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: $marker;
+  color: $white;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.gateText {
+  font-size: $text-sm;
+  line-height: $leading-loose;
+
+  strong {
+    color: $marker-dark;
+    font-weight: $weight-bold;
+  }
+}

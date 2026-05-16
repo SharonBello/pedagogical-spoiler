@@ -1,0 +1,105 @@
+.hero {
+  position: relative;
+  background: $white;
+  border: $border-paper;
+  border-radius: $radius-lg;
+  padding: $space-7 $space-6 $space-5;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    @include blueprint-grid(20px);
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  // every direct child above the grid layer
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.stamp {
+  position: absolute;
+  top: $space-4;
+  left: $space-4; // visually-left in RTL = the LEFT side
+  transform: rotate(-6deg);
+  font-family: $font-mono;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: $marker;
+  border: 2px dashed $marker;
+  padding: $space-1 $space-3;
+  border-radius: $radius-sm;
+  z-index: 2;
+}
+
+.eyebrow {
+  display: block;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  color: $amber-dark;
+  letter-spacing: 0.08em;
+  margin-bottom: $space-2;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: 38px;
+  font-weight: $weight-black;
+  color: $blueprint-dark;
+  line-height: 1.1;
+  margin-bottom: $space-3;
+  letter-spacing: -0.02em;
+
+  @include respond-to(md) {
+    font-size: 48px;
+  }
+}
+
+.lede {
+  font-size: $text-md;
+  color: $ink;
+  max-width: 560px;
+  line-height: $leading-loose;
+
+  strong {
+    color: $marker;
+    font-weight: $weight-bold;
+  }
+}
+
+.takeaways {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-2;
+  margin-top: $space-5;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pill {
+  background: $amber-pale;
+  border-right: 3px solid $amber;
+  border-radius: $radius-sm;
+  padding: $space-3 $space-4;
+  color: $ink;
+  font-size: $text-sm;
+  line-height: 1.5;
+
+  b {
+    display: block;
+    color: $amber-dark;
+    font-family: $font-mono;
+    font-size: 11px;
+    font-weight: $weight-medium;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+}

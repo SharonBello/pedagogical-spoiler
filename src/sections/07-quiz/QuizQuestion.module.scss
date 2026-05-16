@@ -1,0 +1,212 @@
+.card {
+  @include paper-surface;
+  padding: $space-4 $space-5;
+  border-top: 3px solid $blueprint;
+  @include flex-col;
+  gap: $space-3;
+  transition: border-color $dur-fast $ease-out;
+}
+
+.cardCorrect { border-top-color: $success; }
+.cardWrong   { border-top-color: $marker; }
+
+// ── HEADER ─────────────────────────────────────────────────────
+.head {
+  @include flex-between;
+  gap: $space-2;
+  flex-wrap: wrap;
+}
+
+.qNum {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.08em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.verdict {
+  @include flex-start;
+  gap: $space-1;
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: $weight-bold;
+  padding: 3px $space-2;
+  border-radius: $radius-sm;
+  letter-spacing: 0.04em;
+
+  svg { font-size: 14px; }
+}
+
+.verdictRight {
+  background: rgba($success, 0.15);
+  color: $success;
+}
+
+.verdictWrong {
+  background: rgba($marker, 0.15);
+  color: $marker;
+}
+
+// ── QUESTION TEXT ──────────────────────────────────────────────
+.question {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+  font-size: $text-md;
+  line-height: $leading-body;
+
+  @include respond-to(md) { font-size: $text-lg; }
+}
+
+// ── OPTIONS ────────────────────────────────────────────────────
+.options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include flex-col;
+  gap: $space-2;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: $paper;
+  border: 1.5px solid $paper-line;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $dur-fast $ease-out;
+  position: relative;
+
+  &:hover { border-color: $blueprint; background: $white; }
+
+  // accessibility — focus ring on the visual label
+  &:focus-within {
+    outline: 2px solid $amber;
+    outline-offset: 2px;
+  }
+}
+
+// Hide the native radio (we render our own dot)
+.radio {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.optionDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid $blueprint-light;
+  background: $white;
+  flex-shrink: 0;
+  transition: all $dur-fast $ease-out;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: $blueprint;
+    opacity: 0;
+    transform: scale(0.4);
+    transition: opacity $dur-fast $ease-out, transform $dur-fast $ease-out;
+  }
+}
+
+.optionText {
+  font-size: $text-sm;
+  line-height: $leading-body;
+  color: $ink;
+}
+
+.optionIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+// ── STATES ─────────────────────────────────────────────────────
+.optionSelected {
+  border-color: $blueprint;
+  background: $blueprint-pale;
+
+  .optionDot {
+    border-color: $blueprint;
+    &::after { opacity: 1; transform: scale(1); }
+  }
+}
+
+.optionLocked {
+  cursor: default;
+  &:hover { border-color: $paper-line; background: $paper; }
+}
+
+.optionCorrect {
+  border-color: $success !important;
+  background: rgba($success, 0.08) !important;
+
+  .optionDot {
+    border-color: $success;
+    background: $success;
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+      background: $white;
+    }
+  }
+
+  .optionText { color: $blueprint-dark; font-weight: $weight-bold; }
+  .optionIcon { color: $success; }
+}
+
+.optionWrong {
+  border-color: $marker !important;
+  background: rgba($marker, 0.08) !important;
+
+  .optionDot {
+    border-color: $marker;
+    background: $marker;
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+      background: $white;
+    }
+  }
+
+  .optionIcon { color: $marker; }
+}
+
+// ── EXPLANATION ────────────────────────────────────────────────
+.explanation {
+  @include flex-col;
+  gap: $space-1;
+  padding: $space-3 $space-4;
+  background: $amber-pale;
+  border-right: 3px solid $amber;
+  border-radius: $radius-sm;
+  margin-top: $space-1;
+
+  p {
+    margin: 0;
+    font-size: $text-sm;
+    line-height: $leading-loose;
+    color: $ink;
+  }
+}
+
+.explanationLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: $weight-bold;
+  letter-spacing: 0.12em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}

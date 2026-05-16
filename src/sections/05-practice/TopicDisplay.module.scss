@@ -1,0 +1,84 @@
+.banner {
+  background: $blueprint-dark;
+  color: $white;
+  border-radius: $radius-lg;
+  padding: $space-4 $space-5;
+  position: relative;
+  overflow: hidden;
+  @include flex-col;
+  gap: $space-3;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+}
+
+.tagRow { @include flex-between; }
+
+.tag {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber;
+  text-transform: uppercase;
+}
+
+.edit {
+  @include flex-start;
+  gap: $space-1;
+  font-size: $text-xs;
+  font-family: $font-mono;
+  color: $amber-light;
+  text-decoration: none;
+  padding: 4px $space-2;
+  border-radius: $radius-sm;
+  border: 1px solid rgba(232, 163, 58, 0.3);
+  transition: all $dur-fast $ease-out;
+
+  &:hover {
+    background: rgba(232, 163, 58, 0.15);
+    border-color: $amber;
+    color: $amber;
+  }
+}
+
+.fields {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-3 $space-5;
+
+  @include respond-to(md) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.field {
+  @include flex-col;
+  gap: 2px;
+
+  dt {
+    font-family: $font-mono;
+    font-size: 10px;
+    color: $amber-light;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    font-family: $font-display;
+    font-size: $text-lg;
+    font-weight: $weight-bold;
+    color: $white;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+}

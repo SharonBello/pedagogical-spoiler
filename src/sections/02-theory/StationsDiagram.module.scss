@@ -1,0 +1,225 @@
+.diagram {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.head {
+  @include flex-col;
+  gap: $space-2;
+}
+
+.title {
+  font-size: $text-xl;
+  color: $blueprint-dark;
+  @include respond-to(md) {
+    font-size: $text-2xl;
+  }
+}
+
+.sub {
+  font-size: $text-md;
+  color: $ink-soft;
+  line-height: $leading-loose;
+  max-width: 640px;
+
+  strong {
+    color: $blueprint-dark;
+    font-weight: $weight-bold;
+  }
+}
+
+// ── The whole diagram frame: paper card with grid texture ─────────
+.frame {
+  @include paper-surface;
+  padding: $space-5 $space-4;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    @include blueprint-grid(24px);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// ── Planning arrow row (above stations) ───────────────────────────
+.planArrow {
+  direction: ltr;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-bottom: $space-3;
+  padding-inline-start: $space-2;
+}
+
+.planLine {
+  flex: 1;
+  height: 3px;
+  background: $marker;
+  position: relative;
+
+  // Arrow head at LEFT end → points LEFT
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 12px solid $marker;
+  }
+}
+
+.planLabel {
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $marker;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+// ── 5 stations laid out left-to-right ─────────────────────────────
+.stations {
+  direction: ltr;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $space-2;
+}
+
+.station {
+  background: $white;
+  border: 1.5px solid $blueprint-pale;
+  border-radius: $radius-md;
+  padding: $space-3 $space-2;
+  @include flex-col;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  transition: transform $dur-fast $ease-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-paper;
+    border-color: $blueprint;
+  }
+}
+
+.first {
+  border: 2.5px solid $marker;
+  box-shadow: 0 0 0 4px rgba($marker, 0.08);
+}
+
+.sym {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.deliveryNum {
+  font-family: $font-mono;
+  font-size: 10px;
+  color: $ink-mute;
+  letter-spacing: 0.06em;
+}
+
+.he {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+  font-size: $text-base;
+  direction: rtl;
+}
+
+.en {
+  font-family: $font-mono;
+  font-size: 10px;
+  color: $ink-soft;
+}
+
+.planBadge {
+  margin-top: 2px;
+  font-family: $font-mono;
+  font-size: 9px;
+  color: $marker;
+  font-weight: $weight-medium;
+  background: rgba($marker, 0.08);
+  padding: 1px 6px;
+  border-radius: $radius-full;
+  letter-spacing: 0.04em;
+}
+
+// ── Delivery arrow row (below stations) ───────────────────────────
+.deliveryArrow {
+  direction: ltr;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-top: $space-3;
+  padding-inline-end: $space-2;
+  opacity: 0.7;
+}
+
+.deliveryLabel {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  color: $blueprint-dark;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.deliveryLine {
+  flex: 1;
+  height: 1.5px;
+  background: $blueprint-dark;
+  position: relative;
+
+  // Arrow head at RIGHT end → points RIGHT
+  &::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 9px solid $blueprint-dark;
+  }
+}
+
+// ── Annotation row (handwritten amber note) ───────────────────────
+.annot {
+  @include annotation;
+  display: flex;
+  align-items: flex-start;
+  gap: $space-2;
+  line-height: $leading-loose;
+  font-size: $text-sm;
+  padding: $space-3 $space-4;
+
+  strong {
+    color: $marker-dark;
+    font-weight: $weight-bold;
+  }
+}
+
+.annotIcon {
+  font-size: $text-md;
+  color: $amber;
+  line-height: 1;
+  margin-top: 2px;
+}

@@ -1,0 +1,77 @@
+.section { @include flex-col; gap: $space-4; margin-top: $space-3; }
+
+.head { @include flex-col; gap: $space-1; }
+
+.tag {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: $text-xl;
+  color: $blueprint-dark;
+  @include respond-to(md) { font-size: $text-2xl; }
+}
+
+.sub {
+  font-size: $text-sm;
+  color: $ink-soft;
+  font-style: italic;
+}
+
+// ── PROMPT CARDS ───────────────────────────────────────────────
+.list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-3;
+  padding: 0;
+  margin: 0;
+
+  @include respond-to(md) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  @include paper-surface;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-3;
+  padding: $space-4;
+  border-top: 3px solid $amber;
+  transition: transform $dur-fast $ease-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lift;
+  }
+}
+
+.num {
+  @include flex-center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: $amber-pale;
+  color: $amber-dark;
+  font-family: $font-mono;
+  font-size: $text-md;
+  font-weight: $weight-bold;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  font-size: $text-md;
+  color: $blueprint-dark;
+  margin-bottom: $space-2;
+}
+
+.cardText {
+  font-size: $text-sm;
+  color: $ink-soft;
+  line-height: $leading-loose;
+}

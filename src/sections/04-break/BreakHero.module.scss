@@ -1,0 +1,164 @@
+.hero {
+  @include paper-surface;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-5;
+  padding: $space-6 $space-5;
+  border-top: 4px solid $amber;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    @include blueprint-grid(28px);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: $space-7;
+  }
+}
+
+// ── LEFT (hero content) ────────────────────────────────────────
+.left {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-4;
+  align-items: start;
+}
+
+.iconWrap {
+  @include flex-center;
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-md;
+  background: $amber;
+  color: $amber-dark;
+  font-size: 30px;
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  display: block;
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber-dark;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+  letter-spacing: -0.02em;
+  margin-bottom: $space-2;
+
+  @include respond-to(md) { font-size: $text-3xl; }
+}
+
+.lede {
+  font-size: $text-md;
+  line-height: $leading-loose;
+  color: $ink;
+  max-width: 480px;
+
+  strong { color: $marker; font-weight: $weight-bold; }
+}
+
+// ── TIMER CARD ─────────────────────────────────────────────────
+.timer {
+  @include flex-col;
+  gap: $space-3;
+  padding: $space-4 $space-5;
+  background: $blueprint-dark;
+  color: $white;
+  border-radius: $radius-md;
+  min-width: 220px;
+}
+
+.timeRow {
+  @include flex-between;
+  gap: $space-2;
+}
+
+.time {
+  font-family: $font-mono;
+  font-size: 36px;
+  font-weight: $weight-bold;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.doneTag {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.1em;
+  background: $amber;
+  color: $blueprint-dark;
+  padding: 3px $space-2;
+  border-radius: $radius-sm;
+  animation: pulse 1.2s $ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+// Progress bar inside timer
+.bar {
+  height: 6px;
+  background: rgba($white, 0.12);
+  border-radius: $radius-full;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: linear-gradient(to left, $amber, $marker);
+  transition: width 1s linear;
+}
+
+.controls {
+  display: flex;
+  gap: $space-2;
+}
+
+.btn {
+  @include flex-center;
+  @include focus-ring;
+  gap: 6px;
+  padding: $space-2 $space-3;
+  border-radius: $radius-sm;
+  background: $amber;
+  color: $blueprint-dark;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  cursor: pointer;
+  flex: 1;
+  transition: all $dur-fast $ease-out;
+
+  &:hover:not(:disabled) { transform: translateY(-1px); }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  svg { font-size: 16px; }
+}
+
+.btnGhost {
+  background: rgba($white, 0.08);
+  color: $blueprint-pale;
+
+  &:hover:not(:disabled) { background: rgba($white, 0.16); }
+}

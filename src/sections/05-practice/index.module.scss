@@ -1,0 +1,113 @@
+// ── EMPTY STATE (no topic picked yet) ──────────────────────────
+.empty {
+  @include paper-surface;
+  @include flex-col;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-8 $space-5;
+  text-align: center;
+  border-right: 4px solid $amber;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    @include blueprint-grid(20px);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+}
+
+.emptyIcon {
+  @include flex-center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: $amber-pale;
+  color: $amber-dark;
+  font-size: 32px;
+}
+
+.emptyTitle {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+}
+
+.emptyText {
+  font-size: $text-md;
+  line-height: $leading-loose;
+  color: $ink-soft;
+  max-width: 520px;
+
+  strong { color: $marker; font-weight: $weight-bold; }
+}
+
+.emptyBtn {
+  @include flex-start;
+  gap: $space-2;
+  padding: $space-3 $space-5;
+  background: $blueprint;
+  color: $white;
+  border-radius: $radius-md;
+  font-weight: $weight-bold;
+  font-size: $text-md;
+  text-decoration: none;
+  border: 1.5px solid $blueprint;
+  transition: all $dur-fast $ease-out;
+
+  &:hover {
+    background: $blueprint-dark;
+    border-color: $blueprint-dark;
+    transform: translateY(-1px);
+    box-shadow: $shadow-lift;
+  }
+}
+
+// ── INTRO BLOCK ────────────────────────────────────────────────
+.intro {
+  @include paper-surface;
+  padding: $space-4 $space-5;
+  border-top: 3px solid $blueprint;
+  @include flex-col;
+  gap: $space-2;
+}
+
+.introTag {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.introList {
+  margin: 0;
+  padding-inline-start: $space-5;
+  @include flex-col;
+  gap: $space-1;
+
+  li {
+    font-size: $text-sm;
+    line-height: $leading-loose;
+    color: $ink;
+
+    strong { color: $marker; font-weight: $weight-bold; }
+  }
+}
+
+// ── PROMPT LIST ────────────────────────────────────────────────
+.prompts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include flex-col;
+  gap: $space-4;
+}
+
+.promptItem { display: block; }

@@ -1,0 +1,151 @@
+.section {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.head {
+  @include flex-col;
+  gap: $space-1;
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: $text-xl;
+  color: $blueprint-dark;
+  @include respond-to(md) {
+    font-size: $text-2xl;
+  }
+}
+
+.sub {
+  font-size: $text-sm;
+  color: $ink-soft;
+  margin-top: $space-1;
+}
+
+// ── Grid of 5 cards ────────────────────────────────────────────
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-3;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  @include paper-surface;
+  padding: $space-4;
+  @include flex-col;
+  gap: $space-3;
+  border-top: 4px solid $blueprint;
+  position: relative;
+
+  // The first card (planOrder 1 = evaluate) gets marker emphasis
+  &:first-child {
+    border-top-color: $marker;
+
+    .planNum {
+      background: $marker;
+      color: $white;
+    }
+  }
+}
+
+.cardHead {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: $space-2;
+  row-gap: 4px;
+}
+
+.planNum {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-medium;
+  background: $blueprint-pale;
+  color: $blueprint-dark;
+  padding: 2px $space-2;
+  border-radius: $radius-sm;
+  letter-spacing: 0.04em;
+  justify-self: start;
+}
+
+.sym {
+  font-size: 24px;
+  line-height: 1;
+  justify-self: end;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.cardTitle {
+  font-family: $font-display;
+  font-size: $text-md;
+  font-weight: $weight-bold;
+  color: $blueprint-dark;
+  grid-column: 1 / -1;
+  margin-top: 4px;
+}
+
+.cardEn {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: $weight-normal;
+  color: $ink-mute;
+  margin-inline-start: $space-1;
+  letter-spacing: 0.04em;
+}
+
+.deliveryNum {
+  grid-column: 1 / -1;
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $ink-mute;
+}
+
+// ── Q & P blocks ───────────────────────────────────────────────
+.block {
+  @include flex-col;
+  gap: $space-1;
+}
+
+.blockLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: $weight-medium;
+  letter-spacing: 0.1em;
+  color: $amber-dark;
+  text-transform: uppercase;
+}
+
+.q {
+  font-size: $text-sm;
+  color: $ink;
+  line-height: $leading-body;
+  background: $amber-pale;
+  padding: $space-2 $space-3;
+  border-right: 3px solid $amber;
+  border-radius: $radius-sm;
+  margin: 0;
+}
+
+.p {
+  font-size: $text-sm;
+  color: $ink-soft;
+  line-height: $leading-body;
+  margin: 0;
+}
