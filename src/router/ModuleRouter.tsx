@@ -6,7 +6,6 @@
 import React, { lazy, Suspense } from 'react';
 import { createHashRouter, Navigate, RouterProvider } from 'react-router-dom';
 import ModuleShell from '@/components/ModuleShell/ModuleShell';
-import Placeholder from '@/components/Placeholder/Placeholder';
 
 const OpeningSection  = lazy(() => import('@/sections/01-opening'));
 const TheorySection   = lazy(() => import('@/sections/02-theory'));
